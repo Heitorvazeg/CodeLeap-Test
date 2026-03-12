@@ -1,0 +1,23 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.modalOverlay {
+    background: rgba(0,0,0,0.5);
+    position: fixed;
+    inset: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Modal {
+    background: white;
+    width: 400px;
+    padding: 20px;
+    margin: auto;
+    border-radius: 8px;
+}

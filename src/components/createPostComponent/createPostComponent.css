@@ -1,0 +1,76 @@
+.createPostComponent {
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    border: 1px solid #999999;
+    border-radius: 16px;
+    background-color: #FFFFFF;
+    margin-top: 24px;
+}
+
+.createPostComponent h1 {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 24px;
+    color: #000000;
+}
+
+.postContent {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.postContent label {
+    font-size: 16px;
+    color: #000000;
+}
+
+.postContent input,
+.postContent textarea {
+    width: 100%;
+    padding: 8px 11px;
+    border: 1px solid #777777;
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
+}
+
+.postContent input::placeholder,
+.postContent textarea::placeholder {
+    color: #CCCCCC;
+}
+
+.postContent textarea {
+    min-height: 74px;
+    resize: vertical;
+}
+
+.createPostBtn {
+    align-self: flex-end;
+    margin-top: 24px;
+    padding: 8px 32px;
+    background-color: #7695EC;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.createPostBtn:hover:not(:disabled) {
+    background-color: #5d7bd1;
+}
+
+.createPostBtn:disabled {
+    background-color: #CCCCCC;
+    cursor: not-allowed;
+}
+
+@media (max-width: 480px) {
+    .createPostBtn {
+        width: 100%;
+    }
+}

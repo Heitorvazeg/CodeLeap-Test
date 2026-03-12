@@ -1,0 +1,164 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgb(220, 217, 217);
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    min-height: 100vh; 
+    width: 100%;
+}
+
+.signOnModal {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    background-color: white;
+    padding: 24px;
+    border-radius: 16px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.signOnModal h1 {
+    font-size: 22px;
+    margin-bottom: 20px;
+}
+
+.inputsDiv {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
+
+.inputsDiv label {
+    font-size: 14px;
+    margin-bottom: -10px;
+}
+
+.inputsDiv input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+.btns {
+    display: flex;
+    min-height: 50px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.enterBtn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #7695EC;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    align-self: flex-end;
+}
+
+.enterBtn:hover {
+    background-color: #88a0e4;
+}
+
+.enterBtn:active {
+    background-color: #b2c1eb;
+}
+
+.enterBtn:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+.singOnBtn {
+    min-height: 35px;
+    margin-top: 10px;
+    background: none;
+    border: none;
+    color: #7695EC;
+    cursor: pointer;
+    text-decoration: underline;
+    align-self: flex-end;
+    text-align: center;
+}
+
+.Modal h2 {
+    font-size: 22px;
+    margin-bottom: 20px;
+    color: #000;
+}
+
+.Modal label {
+    font-size: 14px;
+    margin-bottom: 5px;
+    margin-top: 10px;
+}
+
+.Modal input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 16px;
+}
+
+.modalButtons {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end; 
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.modalButtons button {
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.2s;
+}
+
+.modalButtons button:first-child {
+    background-color: #eee;
+    color: #333;
+}
+
+.modalButtons button:first-child:hover {
+    background-color: #e0e0e0;
+}
+
+.modalButtons button:last-child {
+    background-color: #7695EC;
+    color: white;
+}
+
+.modalButtons button:last-child:hover {
+    background-color: #88a0e4;
+}
+
+.modalButtons button:last-child:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+@media (max-width: 400px) {
+    .modalButtons {
+        flex-direction: column-reverse;
+        gap: 10px;
+    }
+    .modalButtons button {
+        width: 100%;
+    }
+}

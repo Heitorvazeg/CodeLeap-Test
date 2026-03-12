@@ -1,0 +1,174 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.headerContainer {
+    background-color: #7695EC;
+    width: 100%;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    padding: 0 37px;
+}
+
+.headerContainer h1 {
+    color: #FFFFFF;
+    font-size: 22px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.postDiv {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #999999;
+    border-radius: 16px;
+    background-color: #FFFFFF;
+    overflow: hidden;
+    margin-bottom: 24px;
+}
+
+.loadingState {
+    min-height: 150px; /* Altura aproximada de um post */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-style: dashed; /* Estilo visual de "carregando" */
+    color: #777;
+}
+
+.titlePostDiv {
+    background-color: #7695EC;
+    padding: 15px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+}
+
+.titlePostDiv h1 {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.buttonsOwnPost {
+    display: flex;
+    gap: 20px;
+}
+
+.deleteEditBtns {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.usernameDatetime {
+    display: flex;
+    justify-content: space-between;
+    padding: 24px 24px 0 24px;
+    color: #777777;
+}
+
+.usernameDatetime h2 {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.postDiv p {
+    padding: 16px 24px 24px 24px;
+    font-size: 18px;
+    line-height: 1.2;
+    color: #000000;
+}
+
+.Modal h2 {
+    font-size: 22px;
+    margin-bottom: 20px;
+    color: #000;
+    font-weight: bold;
+}
+
+.Modal label {
+    font-size: 14px;
+    margin-bottom: 5px;
+    margin-top: 10px;
+}
+
+.Modal input, .Modal textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 16px;
+    font-family: inherit;
+}
+
+.Modal textarea {
+    min-height: 80px;
+    resize: vertical;
+}
+
+.modalButtons {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end; 
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.modalButtons .edit {
+    background-color: green;
+}
+
+.modalButtons button {
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.2s;
+}
+
+.modalButtons button:first-child {
+    background-color: #eee;
+    color: #333;
+}
+
+.modalButtons button:first-child:hover {
+    background-color: #e0e0e0;
+}
+
+.modalButtons button:last-child .edit {
+    background-color: #7695EC;
+    color: white;
+}
+
+.modalButtons button:last-child:hover {
+    background-color: #88a0e4;
+}
+
+.modalButtons button:last-child:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+@media (max-width: 600px) {
+    .usernameDatetime {
+        flex-direction: column;
+        gap: 5px;
+    }
+}
+
+@media (max-width: 400px) {
+    .modalButtons {
+        flex-direction: column-reverse;
+        gap: 10px;
+    }
+    .modalButtons button {
+        width: 100%;
+    }
+}
