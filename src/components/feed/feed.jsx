@@ -128,6 +128,16 @@ function Feed({ posts, setPosts, usernameSession }) {
         </div>
     }
 
+    if (posts.length == 0) {
+        return <div>
+            No posts found
+            <p>Have a poem: The screen is blank, the feed is still,
+                No words to read, no space to fill.
+                A quiet world of empty lines,
+                Waiting for your thoughts and designs.</p>
+        </div>
+    }
+
 
     function isOwnPost(usernamePost) {
         return usernameSession?.trim().toLowerCase() === usernamePost?.trim().toLowerCase();
