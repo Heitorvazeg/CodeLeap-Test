@@ -7,6 +7,17 @@ The project also implements **infinite scroll pagination** for efficient post lo
 
 ---
 
+# Deployment
+
+The application is deployed on **Vercel** and can be accessed at:
+
+**Live URL:**  
+https://code-leap-test-seven.vercel.app/
+
+This deployment contains the full production build of the project.
+
+---
+
 # Demo Login
 
 To make it easier to evaluate the project, you can use the following test account:
@@ -15,17 +26,6 @@ Email: codeleap@email.com
 Password: codeleap  
 
 You can also **create new users directly in the application**, since authentication is handled by **Supabase**.
-
----
-
-# Deployment
-
-The application is deployed on **Vercel** and can be accessed at:
-
-**Live URL:**  
-<YOUR_VERCEL_DEPLOYMENT_URL>
-
-This deployment contains the full production build of the project.
 
 ---
 
