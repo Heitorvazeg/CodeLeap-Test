@@ -1,8 +1,8 @@
 import api from "../api"
 
 class CodeLeapBackendServiceClass {
-    GetPaginatedPosts = async (page, limit) => {
-        const { data } = await api.get(`?page=${page}&limit=${limit}`, { requiresAuth: false });
+    GetPaginatedPosts = async (offset, limit) => {
+        const { data } = await api.get(`?limit=${limit}&offset=${offset}`, { requiresAuth: false });
         return data;
     }
 

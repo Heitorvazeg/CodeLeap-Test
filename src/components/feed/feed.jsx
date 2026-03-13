@@ -1,5 +1,5 @@
 import  CodeLeapBackendService  from "../../services/codeLeapBackendService/codeLeapBackendService";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Modal from "react-modal";
 import { toast } from "react-hot-toast";
 import "./feed.css";
@@ -10,8 +10,10 @@ function Feed({ posts, setPosts, usernameSession }) {
 
     const [hasMore, setHasMore] = useState(true);
 
-    const [page, setPage] = useState(1);
+    const [offset, setOffset] = useState(0);
     const limit = 10;
+
+    const loadingRef = useRef(false);
 
     const [deleteModalIsOpen, setDeleteModalIsOpen] = useState(false);
     const [editModalIsOpen, setEditModalIsOpen] = useState(false);
@@ -71,55 +73,68 @@ function Feed({ posts, setPosts, usernameSession }) {
     // Fetch CodeLeapBackendService with scroll pagination
     useEffect(() => {
         const fetchPosts = async () => {
-            if (loading) return;
-            if (!hasMore) return;
+            if (!hasMore || loadingRef.current) return;
+
+            loadingRef.current = true;
+            setLoading(true);
 
             try {
-                setLoading(true);
-                
-                const data  = await CodeLeapBackendService.GetPaginatedPosts(page, limit);
+                const data = await CodeLeapBackendService.GetPaginatedPosts(offset, limit);
 
-                if (!data.next) setHasMore(false);
-                
-                setPosts((prev) => [...prev, ...(data?.results || [])])
+                if (!data?.next) {
+                    setHasMore(false);
+                }
+
+                console.log(posts);
+
+                setPosts((prev) => {
+                    const newPosts = data?.results?.filter(
+                        (newPost) => !prev.some((oldPost) => oldPost.id === newPost.id)
+                    );
+
+                    return [...prev, ...(newPosts || [])];
+                });
 
             } catch (err) {
                 setError(err);
 
             } finally {
+                loadingRef.current = false;
                 setLoading(false);
             }
         };
 
         fetchPosts();
 
-    }, [page]);
+    }, [offset]);
 
 
-    const handleScroll = () => {
-        if (loading) return;
-
-        const scrollTop = document.documentElement.scrollTop;
-        const windowHeight = window.innerHeight;
-        const fullHeight = document.documentElement.offsetHeight;
-
-        // Sees if we are in the end of the page, which means end of posts
-        const reachedBottom = scrollTop + windowHeight >= fullHeight - 50;
-
-        if (reachedBottom && !loading) {
-            setPage((prev) => prev + 1);
-        }
-    };
-
-    // handleScroll listener
     useEffect(() => {
+
+        const handleScroll = () => {
+            if (loadingRef.current || !hasMore) return;
+
+            const scrollTop = window.scrollY;
+            const windowHeight = window.innerHeight;
+            const fullHeight = document.body.offsetHeight;
+
+            const reachedBottom = scrollTop + windowHeight >= fullHeight - 150;
+
+            if (reachedBottom) {
+                setOffset((prev) => prev + 10);
+            }
+        };
+
         window.addEventListener("scroll", handleScroll);
-        
-        return () => window.removeEventListener("scroll", handleScroll);
-    }, [])
+
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+        };
+
+    }, [hasMore]);
 
     if (error) {
-        return <div>
+        return <div className="loadingState">
             Error fetching posts: {error.message}
             <p>Have a poem: The syntax fails, the screen turns red,
             A thousand logs I haven't read.
@@ -129,7 +144,7 @@ function Feed({ posts, setPosts, usernameSession }) {
     }
 
     if (posts.length == 0) {
-        return <div>
+        return <div className="loadingState">
             No posts found
             <p>Have a poem: The screen is blank, the feed is still,
                 No words to read, no space to fill.
@@ -153,7 +168,7 @@ function Feed({ posts, setPosts, usernameSession }) {
 
 
     return (
-        <div>
+        <div className="externalPostDiv">
             {posts?.map((post) => {
                 return (
                     <div key={post.id} className="postDiv">
@@ -210,7 +225,7 @@ function Feed({ posts, setPosts, usernameSession }) {
                             Cancel
                         </button>
 
-                        <button onClick={handleDelete} className="delete">
+                        <button onClick={handleDelete} id="delete">
                             Delete
                         </button>
 
@@ -249,7 +264,7 @@ function Feed({ posts, setPosts, usernameSession }) {
                         <button
                             disabled={!selectedPost || !isValid(selectedPost.title, selectedPost.content)}
                             onClick={handleEdit}
-                            className="edit"
+                            id="edit"
                         >
                             Save
                         </button>

@@ -64,6 +64,10 @@
     background-color: #5d7bd1;
 }
 
+.createPostBtn:active:not(:disabled) {
+    background-color: #2c55c6;
+}
+
 .createPostBtn:disabled {
     background-color: #CCCCCC;
     cursor: not-allowed;

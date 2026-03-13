@@ -1,16 +1,93 @@
-# React + Vite
+# CodeLeap Social Network
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A **social network application** built as part of the **CodeLeap technical challenge**.  
+The platform allows users to authenticate, create posts, and interact with the feed through full **CRUD operations**.
 
-Currently, two official plugins are available:
+The project also implements **infinite scroll pagination** for efficient post loading and a **responsive interface**, ensuring a good user experience across different screen sizes.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+# Demo Login
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+To make it easier to evaluate the project, you can use the following test account:
 
-## Expanding the ESLint configuration
+Email: codeleap@email.com  
+Password: codeleap  
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+You can also **create new users directly in the application**, since authentication is handled by **Supabase**.
+
+---
+
+# Deployment
+
+The application is deployed on **Vercel** and can be accessed at:
+
+**Live URL:**  
+<YOUR_VERCEL_DEPLOYMENT_URL>
+
+This deployment contains the full production build of the project.
+
+---
+
+# Technologies Used
+
+- React
+- JavaScript
+- Supabase (Authentication)
+- REST API (CodeLeap Backend)
+- CSS
+- Responsive Design
+
+---
+
+# Features
+
+## Authentication
+
+User authentication is implemented using **Supabase Auth**.
+
+The application supports:
+
+- User login with email and password
+- User registration (create new accounts)
+- Session management
+
+---
+
+## CRUD Operations
+
+Authenticated users can perform all basic **CRUD operations** on posts:
+
+- **Create** – Create new posts  
+- **Read** – View posts in the feed  
+- **Update** – Edit their own posts  
+- **Delete** – Remove their own posts  
+
+---
+
+## Infinite Scroll Pagination
+
+The feed uses **scroll pagination (infinite scroll)** to improve performance and user experience.
+
+Instead of loading all posts at once:
+
+- Posts are loaded **progressively**
+- When the user reaches the bottom of the page, new posts are fetched automatically
+- This reduces unnecessary data loading and improves performance
+
+---
+
+## Responsive Design
+
+The interface was designed to work properly on different devices:
+
+- Desktop
+- Tablets
+- Mobile phones
+
+The layout adapts to screen size to maintain **usability and readability**.
+
+---
+
+# Author
+Heitor VAz

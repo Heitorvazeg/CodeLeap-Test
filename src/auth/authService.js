@@ -1,4 +1,5 @@
-import { supabase } from "../services/supabaseService/supabaseClient"
+import { supabase } from "../services/supabaseService/supabaseClient";
+import toast from "react-hot-toast";
 
 class AuthServiceClass {
     login = async (email, password) => {
@@ -29,6 +30,7 @@ class AuthServiceClass {
 
     logout = async () => {
         await supabase.auth.signOut();
+        toast.success("Logout  successful")
         localStorage.removeItem("token");
     }
 }

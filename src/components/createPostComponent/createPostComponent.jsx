@@ -29,10 +29,10 @@ function CreatePostComponent({ setPosts, usernameSession }) {
         }
 
         try {
-            await CodeLeapBackendService.PostPosts(newPost);
+            const response = await CodeLeapBackendService.PostPosts(newPost);
 
 
-            setPosts((prev) => [newPost, ...prev]);
+            setPosts((prev) => [response, ...prev]);
 
             toast.success("Post created successfully")
             setContent("");
